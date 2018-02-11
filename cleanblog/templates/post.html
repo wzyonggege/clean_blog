@@ -36,14 +36,18 @@
       <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
       {% csrf_token %}
         <div class="form-group">
-          <label for="{{ form.name.id_for_label }}">名字：</label>
+          <label for="{{ form.name.id_for_label }}">Name</label>
+          <!--<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">-->
           {{ form.name }}
           {{ form.name.errors }}
-
-          <label for="{{ form.email.id_for_label }}">邮箱：</label>
+        </div>
+        <div class="form-group">
+          <label for="{{ form.email.id_for_label }}">Email address</label>
+          <!--<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">-->
           {{ form.email }}
           {{ form.email.errors }}
-
+        </div>
+        <div class="form-group">
           <label for="{{ form.content.id_for_label }}">评论：</label>
           {{ form.content }}
           {{ form.content.errors }}
