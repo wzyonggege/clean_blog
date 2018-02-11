@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-{% load blog_extras %}
+{% load blog_tags %}
 <html lang="en">
 
   <head>
@@ -76,32 +76,19 @@
 
           <!-- Categories Widget -->
           <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
+            <h5 class="card-header">文章分类</h5>
             <div class="card-body">
               <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                   {% cate_list as c_list %}
-                  <ul class="list-unstyled mb-0">
+                  <ul >
                     {% for cate in c_list %}
                     <li>
-                      <a href="#">{{ cate.name }}</a>
+                      <a href="{% url 'blog:category' cate.pk %}">{{ cate.name }} </a> <span class="post-count">(13)</span>
                     </li>
                     {% empty %}
                     not available
                     {% endfor %}
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">JavaScript</a>
-                    </li>
-                    <li>
-                      <a href="#">CSS</a>
-                    </li>
-                    <li>
-                      <a href="#">Tutorials</a>
-                    </li>
                   </ul>
                 </div>
               </div>
@@ -110,9 +97,22 @@
 
           <!-- Side Widget -->
           <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
+            <h5 class="card-header">归档</h5>
             <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+              <div class="row">
+                <div class="col-lg-6">
+                  {% archives as date_list %}
+                  <ul class="list-unstyled mb-0">
+                    {% for date in date_list %}
+                    <li>
+                      <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }} 年 {{ date.month}} 月 </a> <span class="post-count">(13)</span>
+                    </li>
+                    {% empty %}
+                    not available
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -127,7 +127,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Clean Blog 2018</p>
       </div>
       <!-- /.container -->
     </footer>

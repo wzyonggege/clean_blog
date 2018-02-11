@@ -1,5 +1,5 @@
 from django import template
-from cleanblog.blog.models import Post, Category, Tag
+from ..models import Post, Category, Tag
 
 register = template.Library()
 
