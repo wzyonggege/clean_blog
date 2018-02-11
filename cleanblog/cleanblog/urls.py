@@ -24,4 +24,5 @@ xversion.register_models()
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r'', include('blog.urls')),
+    url(r'', include('comments.urls')),
 ]
