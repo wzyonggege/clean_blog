@@ -9,8 +9,11 @@ class GlobalSetting(object):
 
 xadmin.site.register(views.CommAdminView, GlobalSetting)
 
+class PostAdmin(object):
+    list_display = ('title', 'author', 'created_time', 'category')
+
 #注册到后台
-xadmin.site.register(Post)
+xadmin.site.register(Post, PostAdmin)
 xadmin.site.register(Category)
 xadmin.site.register(Tag)
 

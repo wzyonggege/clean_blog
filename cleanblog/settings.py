@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'reversion',
     'blog',
-    'comments'
+    'comments',
 ]
 
 MIDDLEWARE = [

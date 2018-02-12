@@ -58,6 +58,9 @@
   </div>
 
   <!-- Single Comment -->
+  <div class="media mb-4">
+    <h3 class="mt-0">Comments({{ post.comment_set.count }})</h3>
+  </div>
   {% for comment in comment_list %}
   <div class="media mb-4">
     <img class="d-flex mr-3 rounded-circle" src="{% static 'img/a.jpg' %}" alt="" width="50" height="50">
