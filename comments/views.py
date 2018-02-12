@@ -10,7 +10,10 @@ def post_comment(request, post_pk):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            content = form.cleaned_data['content']
+            comment = Comment(name=name, email=email, content=content)
             comment.post = post
             comment.save()
             return redirect(post)
