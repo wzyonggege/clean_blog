@@ -65,12 +65,14 @@
           <div class="card my-4">
             <h5 class="card-header">Search</h5>
             <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-              </div>
+              <form role="search" method="get" id="searchform" action="{% url 'haystack_search' %}">
+                <div class="input-group">
+                  <input type="search" name="kd" class="form-control" placeholder="Search for...">
+                  <!--<span class="input-group-btn">-->
+                  <button class="btn btn-secondary" type="submit"><span class="ion-ios-search-strong">Go!</span></button>
+                  <!--</span>-->
+                </div>
+              </form>
             </div>
           </div>
 

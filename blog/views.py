@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
+from django.db.models import Q
 
 from .models import Post, Category
 from comments.forms import CommentForm
@@ -54,4 +55,15 @@ class PostView(DetailView):
         return context
 
 
+def search(request):
+    q = request.GET.get('kd')
+    error_msg = ''
+
+    if not q:
+        error_msg = "请输入关键词"
+        return render(request, 'index.html', {'error_msg': error_msg})
+
+    post_list = Post.objects.filter(Q(title__icontains=q) | Q(content__icontains=q))
+    return render(request, 'index.html', {'error_msg': error_msg,
+                                          'post_list': post_list})
 

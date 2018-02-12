@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r'', include('blog.urls')),
     url(r'', include('comments.urls')),
+    url(r'^search/', include('haystack.urls')),
 ]
