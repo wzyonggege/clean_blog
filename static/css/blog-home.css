@@ -13,3 +13,54 @@ body {
     padding-top: 56px;
   }
 }
+
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #777;
+  border-radius: 10px;
+}
+
+.btn .label {
+  position: relative;
+  top: -1px;
+}
+
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  margin: 0em 0.5em 0em 0em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.label:empty {
+  display: none;
+}
+
+.label-info {
+  background-color: #5bc0de;
+}
+
+.label-primary {
+  background-color: #337ab7;
+}
+
+.label-success {
+  background-color: #5cb85c;
+}
+

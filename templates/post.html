@@ -14,6 +14,10 @@
     <a href="#">{{ post.author }}</a>
   </p>
 
+  {% for tag in post.tags.all %}
+    <span class="label label-success"> {{ tag.name }} </span>
+  {% endfor %}
+
   <hr>
 
   <!-- Date/Time -->
@@ -25,7 +29,7 @@
   <!--<img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
 
   <!-- Post Content -->
-  {{ post.content }}
+  {{ post.content|safe }}
 
   <hr>
 

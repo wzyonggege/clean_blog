@@ -13,8 +13,8 @@
     <title>Blog Home - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="{% static 'css/blog-home.css' %}" rel="stylesheet">
 
@@ -84,7 +84,7 @@
                   <ul >
                     {% for cate in c_list %}
                     <li>
-                      <a href="{% url 'blog:category' cate.pk %}">{{ cate.name }} </a> <span class="post-count">(13)</span>
+                      <a href="{% url 'blog:category' cate.pk %}">{{ cate.name }} <span class="badge label-primary">{{ cate.post_num }}</span></a>
                     </li>
                     {% empty %}
                     not available
@@ -105,7 +105,7 @@
                   <ul class="list-unstyled mb-0">
                     {% for date in date_list %}
                     <li>
-                      <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }} 年 {{ date.month}} 月 </a> <span class="post-count">(13)</span>
+                      <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }} 年 {{ date.month}} 月 <span class="badge label-primary">{{ date.post_set.count }}</span> </a>
                     </li>
                     {% empty %}
                     not available
