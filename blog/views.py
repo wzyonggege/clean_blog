@@ -20,6 +20,10 @@ class ArchivesView(IndexView):
         return super(ArchivesView, self).get_queryset().filter(created_time__year=self.kwargs.get('year'),
                                                                created_time__month=self.kwargs.get('month'),)
 
+def archives(request):
+    date_list = Post.objects.dates('created_time', 'month', order='DESC')
+    return render(request, 'archives.html', context={'date_list': date_list})
+
 
 class CategoryView(IndexView):
     def get_queryset(self):
@@ -54,16 +58,4 @@ class PostView(DetailView):
         })
         return context
 
-
-def search(request):
-    q = request.GET.get('kd')
-    error_msg = ''
-
-    if not q:
-        error_msg = "请输入关键词"
-        return render(request, 'index.html', {'error_msg': error_msg})
-
-    post_list = Post.objects.filter(Q(title__icontains=q) | Q(content__icontains=q))
-    return render(request, 'index.html', {'error_msg': error_msg,
-                                          'post_list': post_list})
 

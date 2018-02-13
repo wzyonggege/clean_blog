@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'reversion',
+    'haystack',
     'blog',
     'comments',
-    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -136,5 +136,5 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
     },
 }
-HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 5
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

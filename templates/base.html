@@ -17,6 +17,12 @@
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{% static 'css/blog-home.css' %}" rel="stylesheet">
+    <!-- highlight -->
+    <style>
+        span.highlighted {
+            color: red;
+        }
+    </style>
 
   </head>
 
@@ -40,7 +46,7 @@
               <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+              <a class="nav-link" href="{% url 'blog:archives_page' %}">Archives</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
@@ -67,7 +73,7 @@
             <div class="card-body">
               <form role="search" method="get" id="searchform" action="{% url 'haystack_search' %}">
                 <div class="input-group">
-                  <input type="search" name="kd" class="form-control" placeholder="Search for...">
+                  <input type="search" name="q" class="form-control" placeholder="Search for...">
                   <!--<span class="input-group-btn">-->
                   <button class="btn btn-secondary" type="submit"><span class="ion-ios-search-strong">Go!</span></button>
                   <!--</span>-->
@@ -78,45 +84,20 @@
 
           <!-- Categories Widget -->
           <div class="card my-4">
-            <h5 class="card-header">文章分类</h5>
+            <h5 class="card-header">Search</h5>
             <div class="card-body">
-              <div class="row">
-                <div class="col-lg-12">
-                  {% cate_list as c_list %}
-                  <ul >
-                    {% for cate in c_list %}
-                    <li>
-                      <a href="{% url 'blog:category' cate.pk %}">{{ cate.name }} <span class="badge label-primary">{{ cate.post_num }}</span></a>
-                    </li>
-                    {% empty %}
-                    not available
-                    {% endfor %}
-                  </ul>
-                </div>
-              </div>
+              {% cate_list as c_list %}
+                <ul class="list-group">
+                  {% for cate in c_list %}
+                  <li class="list-group-item ">
+                    <a href="{% url 'blog:category' cate.pk %}">{{ cate.name }} <span class="badge label-primary">{{ cate.post_num }}</span></a>
+                  </li>
+                  {% empty %}
+                  not available
+                </ul>
+              {% endfor %}
             </div>
-          </div>
-
-          <!-- Side Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">归档</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  {% archives as date_list %}
-                  <ul class="list-unstyled mb-0">
-                    {% for date in date_list %}
-                    <li>
-                      <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }} 年 {{ date.month}} 月 <span class="badge label-primary">{{ date.post_set.count }}</span> </a>
-                    </li>
-                    {% empty %}
-                    not available
-                    {% endfor %}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
 
         </div>
 
@@ -137,6 +118,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
 
   </body>
 

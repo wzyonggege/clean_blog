@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+{% block main %}
+<!-- Blog Entries Column -->
+<div class="col-md-8">
+
+  <h1 class="my-4">Archives</h1>
+
+  <!-- Blog Post -->
+  <ul class="list-group">
+    {% for date in date_list %}
+      <li class="list-group-item ">
+          <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }} 年 {{ date.month}} 月</a>
+      </li>
+    {% empty %}
+    <li class="list-group-item ">
+      Not Available
+    </li>
+    {% endfor %}
+    </ul>
+
+</div>
+{% endblock main %}

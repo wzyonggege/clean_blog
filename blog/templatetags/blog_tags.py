@@ -11,3 +11,4 @@ def archives():
 @register.simple_tag
 def cate_list():
     return Category.objects.annotate(post_num=Count('post')).filter(post_num__gt=0)
+

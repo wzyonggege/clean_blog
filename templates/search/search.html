@@ -1,28 +1,25 @@
 {% extends 'base.html' %}
 {% load highlight %}
 {% block main %}
+
 <!-- Blog Entries Column -->
 <div class="col-md-8">
+{% if query %}
 
-  <h1 class="my-4">Post List</h1>
-
-  {% if error_msg %}
-    <p>{{ error_msg }}</p>
-  {% endif %}
-
+  <h1 class="my-4">Search Result</h1>
   <!-- Blog Post -->
-  {% if query %}
+
     {% for res in page.object_list %}
       <div class="card mb-4">
         <!--<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">-->
         <div class="card-body">
           <h2 class="card-title">{% highlight res.object.title with query %}</h2>
           <p class="card-text">{% highlight res.object.content with query max_length 40 %}</p>
-          <a href="{{ res.objects.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+          <a href="{{ res.object.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
         </div>
         <div class="card-footer text-muted">
-          Posted on {{ res.objects.created_time }} by
-          <a href="#">{{ res.objects.author }}</a>
+          Posted on {{ res.object.created_time }} by
+          <a href="#">{{ res.object.author }}</a>
         </div>
       </div>
     {% empty %}
@@ -33,25 +30,25 @@
       </div>
     {% endfor %}
 
-  {% endif %}
+
 
 
   <!-- Pagination -->
 
-  {% if is_paginated %}
+  {% if page.has_previous or page.has_next %}
   <ul class="pagination justify-content-center mb-4">
-    {% if page_obj.has_previous %}
+    {% if page.has_previous %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Older</a>
+      <a class="page-link" href="?q={{ query }}&amp;page={{ page.previous_page_number }}">&larr; Older</a>
     </li>
     {% else %}
     <li class="page-item disabled">
       <a class="page-link" href="#">&larr; Older</a>
     </li>
     {% endif %}
-    {% if page_obj.has_next %}
+    {% if page.has_next %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ page_obj.next_page_number }}">Newer &rarr;</a>
+      <a class="page-link" href="?q={{ query }}&amp;page={{ page.next_page_number }}">Newer &rarr;</a>
     </li>
     {% else %}
     <li class="page-item disabled">
@@ -61,5 +58,7 @@
   </ul>
   {% endif %}
 
+{% endif %}
 </div>
+
 {% endblock main %}
