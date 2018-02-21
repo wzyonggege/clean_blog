@@ -3,7 +3,7 @@
 <!-- Blog Entries Column -->
 <div class="col-md-8">
 
-  <h1 class="my-4">Post List</h1>
+  <h1 class="my-4">{% if title %}{{ title }}{% else %}Post List{% endif %}</h1>
 
   {% if error_msg %}
     <p>{{ error_msg }}</p>
