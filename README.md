@@ -11,3 +11,12 @@
 
 ------
 
+以centos7为例
+
+### 1. 安装mysql
+
+参考 https://my.oschina.net/Laily/blog/713023
+
+
+
+
