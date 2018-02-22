@@ -15,15 +15,21 @@ Including another URLconf
 """
 import xadmin
 from django.conf.urls import url, include
+from cleanblog.settings import MEDIA_ROOT
+from django.views.static import serve
 
 xadmin.autodiscover()
 
 from xadmin.plugins import xversion
 xversion.register_models()
 
+from ckeditor_uploader import urls as ckeditor_uploader_urls
+
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r'', include('blog.urls')),
     url(r'', include('comments.urls')),
     url(r'^search/', include('haystack.urls')),
+    url(r'^ckeditor/', include(ckeditor_uploader_urls)),
+    url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
 ]
