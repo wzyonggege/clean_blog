@@ -17,6 +17,7 @@ import xadmin
 from django.conf.urls import url, include
 from cleanblog.settings import MEDIA_ROOT
 from django.views.static import serve
+from blog.feed import AllPostRssFeed
 
 xadmin.autodiscover()
 
@@ -32,4 +33,5 @@ urlpatterns = [
     url(r'^search/', include('haystack.urls')),
     url(r'^ckeditor/', include(ckeditor_uploader_urls)),
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
+    url(r'^all/rss/$', AllPostRssFeed(), name='rss'),
 ]

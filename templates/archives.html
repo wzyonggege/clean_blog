@@ -1,5 +1,24 @@
 {% extends 'base.html' %}
 {% load blog_tags %}
+
+{% block nav %}
+<ul class="navbar-nav ml-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'blog:index' %}">Home
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">About</a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="{% url 'blog:archives_page' %}">Archives</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'rss' %}">RSS</a>
+  </li>
+</ul>
+{% endblock nav %}
+
 {% block main %}
 <!-- Blog Entries Column -->
 <div class="col-md-8">
