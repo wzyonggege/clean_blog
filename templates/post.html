@@ -32,37 +32,87 @@
   {{ post.content|safe }}
   <hr>
 
-  <!-- Comments Form -->
-  <div class="card my-4">
-    <h5 class="card-header">Leave a Comment:</h5>
-    <div class="card-body">
+  <!-- Button trigger modal -->
+  <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">-->
+    <!--Launch demo modal-->
+  <!--</button>-->
 
-      <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
-      {% csrf_token %}
-        <div class="form-group">
-          <label for="{{ form.name.id_for_label }}">Name</label>
-          {{ form.name }}
-          {{ form.name.errors }}
+  <!-- Modal -->
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Comment</h4>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
-        <div class="form-group">
-          <label for="{{ form.email.id_for_label }}">Email address</label>
-          {{ form.email }}
-          {{ form.email.errors }}
+        <div class="modal-body">
+          <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
+          {% csrf_token %}
+            <div class="form-group">
+              <label for="{{ form.name.id_for_label }}">Name</label>
+              {{ form.name }}
+              {{ form.name.errors }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.email.id_for_label }}">Email address</label>
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.content.id_for_label }}">Comment</label>
+              {{ form.content }}
+              {{ form.content.errors }}
+              <!--<textarea class="form-control" rows="3"></textarea>-->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="{{ form.content.id_for_label }}">Comment</label>
-          {{ form.content }}
-          {{ form.content.errors }}
-          <!--<textarea class="form-control" rows="3"></textarea>-->
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      </div>
     </div>
   </div>
 
+  <br>
+
+  <!-- Comments Form -->
+  <!--<div class="card my-4">-->
+    <!--<h5 class="card-header">Leave a Comment:</h5>-->
+    <!--<div class="card-body">-->
+
+      <!--<form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">-->
+      <!--{% csrf_token %}-->
+        <!--<div class="form-group">-->
+          <!--<label for="{{ form.name.id_for_label }}">Name</label>-->
+          <!--{{ form.name }}-->
+          <!--{{ form.name.errors }}-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+          <!--<label for="{{ form.email.id_for_label }}">Email address</label>-->
+          <!--{{ form.email }}-->
+          <!--{{ form.email.errors }}-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+          <!--<label for="{{ form.content.id_for_label }}">Comment</label>-->
+          <!--{{ form.content }}-->
+          <!--{{ form.content.errors }}-->
+          <!--&lt;!&ndash;<textarea class="form-control" rows="3"></textarea>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+      <!--</form>-->
+    <!--</div>-->
+  <!--</div>-->
+
   <!-- Single Comment -->
   <div class="media mb-4">
-    <h3 class="mt-0">Comments({{ post.comment_set.count }})</h3>
+    <h4 class="mt-0">Comments({{ post.comment_set.count }})
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Add Your Comment
+    </button>
+    </h4>
   </div>
   {% for comment in comment_list %}
   <div class="media mb-4">
