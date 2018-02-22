@@ -4,6 +4,7 @@
 
 - Python 3.6
 - Django 1.10
+- MySQL
 - xadmin
 - Bootstrap
 - CKeditor
