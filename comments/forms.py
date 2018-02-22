@@ -8,7 +8,7 @@ class CommentForm(forms.Form):
     )
     email = forms.EmailField(
         label='Email',
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email'})
     )
     content = forms.CharField(
         label='Comment',
