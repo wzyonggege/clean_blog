@@ -155,7 +155,6 @@ CKEDITOR_ALLOW_NONIMAGE_FILES = True
 CKEDITOR_FILENAME_GENERATOR = 'ckeditor_uploader.utils.generate_uuid4_filename'
 
 CKEDITOR_CONFIGS = {
-    #字典内不同的键可以在字段内进行选择
     "vul_address": {
         'toolbar': 'full', # full, None, Basic
         'height': 200,
