@@ -13,9 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+import xadmin
 from django.conf.urls import url, include
 
-import xadmin
 xadmin.autodiscover()
 
 from xadmin.plugins import xversion
@@ -26,5 +26,4 @@ urlpatterns = [
     url(r'', include('blog.urls')),
     url(r'', include('comments.urls')),
     url(r'^search/', include('haystack.urls')),
-    url(r'^ueditor/', include('DjangoUeditor.urls'))
 ]

@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 
-from DjangoUeditor.models import UEditorField
-
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -24,11 +22,12 @@ class Post(models.Model):
     author = models.ForeignKey(User)
     tags = models.ManyToManyField(Tag, blank=True)
     category = models.ForeignKey(Category)
-    content = UEditorField(verbose_name='Content',
-                           width=600, height=300, toolbars="full",
-                           imagePath="blog/ueditor/", filePath="blog/ueditor/",
-                           upload_settings={"imageMaxSize": 1204000},
-                           default='')
+    content = models.TextField()
+    # content = UEditorField(verbose_name='Content',
+    #                        width=600, height=300, toolbars="full",
+    #                        imagePath="blog/ueditor/", filePath="blog/ueditor/",
+    #                        upload_settings={"imageMaxSize": 1204000},
+    #                        default='')
 
     created_time = models.DateTimeField()
     summary = models.CharField(max_length=200)
