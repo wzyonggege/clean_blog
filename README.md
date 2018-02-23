@@ -2,12 +2,15 @@
 
 一个基于Django开发的博客系统:
 
-- Python 3.6
-- Django 1.10
-- MySQL
-- xadmin
-- Bootstrap
-- CKeditor
+- Python3.6 和 Django1.10
+- MySQL储存方案
+- xadmin后台管理
+- ckeditor编辑器，图片上传
+- Bootstrap前端模板
+- RSS订阅
+- 标签分类与日期归档
+- 文章评论
+- haystack文章内容搜索
 
 ------
 ### 首页
