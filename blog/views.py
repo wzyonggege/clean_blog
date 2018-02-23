@@ -21,8 +21,11 @@ class IndexView(ListView):
 
 class ArchivesView(IndexView):
     def get_queryset(self):
-        return super(ArchivesView, self).get_queryset().filter(created_time__year=self.kwargs.get('year'),
-                                                               created_time__month=self.kwargs.get('month'),)
+        year = self.kwargs.get('year')
+        month = self.kwargs.get('month')
+        return super(ArchivesView, self).get_queryset().filter(created_time__year=year,
+                                                               created_time__month=month)
+
 
     def get_context_data(self, **kwargs):
         context = super(ArchivesView, self).get_context_data(**kwargs)

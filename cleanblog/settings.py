@@ -24,7 +24,7 @@ SECRET_KEY = '_m9c!59*^eq8dpi9ntu$c0m32o4sgkaiu2ed$r@3^cftk@cbhs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', ]
 
 
 # Application definition
@@ -86,7 +86,7 @@ DATABASES = {
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'NAME': 'myblog',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Zaqxswcde123',
         'HOST': 'localhost',
         'PORT': '3306',
     }
