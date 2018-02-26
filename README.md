@@ -14,22 +14,25 @@
 
 Usage:
 
-"""
-git clone git@github.com:wzyonggege/clean_blog.git
-virtualenv venv
-. venv/bin/activate
-"""
+- 新建虚拟环境
 
-数据库迁移
-"""
+'''
+git clone git@github.com:wzyonggege/clean_blog.git
+virtualenv --python=<py3path> venv
+. venv/bin/activate
+'''
+
+- 数据库迁移
+
+'''
 python manage.py makemigrations
 python manage.py migrate
-"""
+'''
 
-创建管理员
-"""
+- 创建管理员
+'''
 python manage.py createsuperuser
-"""
+'''
 
 ------
 ### 首页
