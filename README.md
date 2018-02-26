@@ -12,6 +12,25 @@
 - 文章评论
 - haystack文章内容搜索
 
+Usage:
+
+"""
+git clone git@github.com:wzyonggege/clean_blog.git
+virtualenv venv
+. venv/bin/activate
+"""
+
+数据库迁移
+"""
+python manage.py makemigrations
+python manage.py migrate
+"""
+
+创建管理员
+"""
+python manage.py createsuperuser
+"""
+
 ------
 ### 首页
 
