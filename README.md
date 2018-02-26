@@ -16,23 +16,23 @@ Usage:
 
 - 新建虚拟环境
 
-'''
+<code>
 git clone git@github.com:wzyonggege/clean_blog.git
 virtualenv --python=<py3path> venv
 . venv/bin/activate
-'''
+</code>
 
 - 数据库迁移
 
-'''
+<code>
 python manage.py makemigrations
 python manage.py migrate
-'''
+</code>
 
 - 创建管理员
-'''
+<code>
 python manage.py createsuperuser
-'''
+</code>
 
 ------
 ### 首页
